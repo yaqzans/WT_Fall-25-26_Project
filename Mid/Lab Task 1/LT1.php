@@ -5,20 +5,20 @@
 </head>
 <body>
 <center>
-<h1 style = color:DarkBlue> Clinic Patient Registration</h1>
+<h2 style = color:DarkBlue> Clinic Patient Registration</h2>
 <div>
 <p class = "left">
 Full Name:<br>
-<input type="text" class ="w"><br>
+<input type="text" class ="w"><br><br>
 Age:<br>
-<input type="text" class ="w"><br>
+<input type="text" class ="w"><br><br>
 Phone Number:<br>
-<input type="text" class ="w"><br>
+<input type="text" class ="w"><br><br>
 Email Address:<br>
-<input type="text" class ="w"><br>
+<input type="text" class ="w"><br><br>
 Insurance Provider:<br>
-<select>
-    <option>              Select Provider              </option>
+<select class ="w">
+    <option>Select Provider</option>
     <option>Provider A</option>
     <option>Provider B</option>
     <option>Provider C</option>
@@ -29,13 +29,13 @@ Insurance Policy Number:<br>
 <h3 style = color:DarkBlue>Additional Information</h3>
 <p class = "left">
 Username:<br>
-<input type="text" class ="w"><br>
-Password:<br>
-<input type="text" class ="w"><br>
-Confirm Password:<br>
 <input type="text" class ="w"><br><br>
+Password:<br>
+<input type="text" class ="w"><br><br>
+Confirm Password:<br>
+<input type="text" class ="w"><br>
 </p>
-<input type = "submit" value="Register">
+<input type = "submit" value="Register" class = "w" style = "background:DarkBlue; color:White; padding :8px">
 </p>
 </div>
 </center>
@@ -43,16 +43,17 @@ Confirm Password:<br>
 <style>
 div{
     border: 2px solid black;
-    width: 300px;
+    width: 350px;
     padding: 10px;
     background-color: Cornsilk;
 }
 .left{
     text-align: left;
     align: left;
+    font-weight: bold;
 }
 .w{
-    width: 280px;
+    width: 340px;
 }
 </style>
 </html>
