@@ -3,10 +3,10 @@
 <head>
     <title>LT 2</title>
 </head>
-<body>
+<body style = "background-color: #eaf3d1ff;">
 <center>
 <div>
-<h1>Student Registration Demo</h1> <br>
+<h1>Student Registration</h1> <br>
 Full Name: <br>
 <input type="text" id="fname"><br><br>
 Email: <br>
@@ -21,7 +21,7 @@ Confirm Password: <br>
 <p id = result> </p>
 <br>
 <div>
-<h1>Course Selection Demo</h1> <br>
+<h1>Course Selection</h1> <br>
 Please select your courses: <br>
 <select>
     <option id = 1>Slot - 1</option>
@@ -96,11 +96,16 @@ div{
     padding: 10px;
     width: 300px;
     margin-bottom: 20px;
+    background-color: #ecefffff;
 }
 #result{
     border: 1px solid black;
     padding: 10px;
     width: 300px;
+    background-color: #94ff52ff;
+}
+h1{
+    background-color: #a8efffff;
 }
 </style>
 </body>
