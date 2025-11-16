@@ -5,6 +5,7 @@
 </head>
 <body>
 <center>
+<div>
 <h1>Student Registration Demo</h1> <br>
 Full Name: <br>
 <input type="text" id="fname"><br><br>
@@ -15,23 +16,27 @@ Password: <br>
 Confirm Password: <br>
 <input type="password" id="cpass"><br><br>
 <button onclick="validate()">Submit</button>
+</div>
 
 <p id = result> </p>
-<br><br><br>
+<br>
+<div>
 <h1>Course Selection Demo</h1> <br>
 Please select your courses: <br>
 <select>
-    <option value="CSE101" id = 1>Slot - 1</option>
-    <option value="CSE102" id = 2>Slot - 2</option>
-    <option value="CSE103" id = 3>Slot - 3</option>
-    <option value="CSE104" id = 4>Slot - 4</option>
-    <option value="CSE105" id = 5>Slot - 5</option>
+    <option id = 1>Slot - 1</option>
+    <option id = 2>Slot - 2</option>
+    <option id = 3>Slot - 3</option>
+    <option id = 4>Slot - 4</option>
+    <option id = 5>Slot - 5</option>
 </select>
-<input type="text" id="courseEdit" placeholder="Enter new course name">
-<input type="text" id="courseIDEdit" placeholder="Enter course ID to edit">
-<input type="text" id="courseRemoveID" placeholder="Enter course ID to remove">
+<br><br>
+<input type="text" id="courseEdit" placeholder="Enter new course name"> <br><br>
+<input type="text" id="courseIDEdit" placeholder="Enter course ID to edit"><br><br>
+<input type="text" id="courseRemoveID" placeholder="Enter course ID to remove"><br><br>
 <button onclick="EditCourse()">Add</button>
 <button onclick="RemoveCourse()">Remove</button>
+</div>
 <br><br><br>
 </center>
 <script>
@@ -85,5 +90,18 @@ function RemoveCourse(){
     return true;
 }
 </script>
+<style>
+div{
+    border: 2px solid black;
+    padding: 10px;
+    width: 300px;
+    margin-bottom: 20px;
+}
+#result{
+    border: 1px solid black;
+    padding: 10px;
+    width: 300px;
+}
+</style>
 </body>
 </html>
