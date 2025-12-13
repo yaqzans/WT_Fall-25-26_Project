@@ -11,19 +11,24 @@
 </header>
 <main>
 <section>
-<div id="box">
+<div id= "box">
     <h3>My Profile</h3>
+    <p>User ID: <b id = "uid">XYZ</b><span style="margin-left: 15px;">Credits: <b>42</b></p>
     Name:<br>
     <input type="text" value="Student"><br><br>
     Email:<br>
     <input type="text" value="student@gmail.com"><br><br>
+    <button id ="btncol">Update Profile</button>
+    <button style="background:red; color:white;">Delete Account</button>
+</div>
+
+<div id= "box">
+    <h3>Change Password</h3>
     New Password:<br>
     <input type="password"><br><br>
     Confirm Password:<br>
-    <input type="password"><br>
-    <p>User ID: <b id = "uid">XYZ</b><span style="margin-left: 15px;">Credits: <b>42</b></p>
-    <button>Update Profile</button>
-    <button style="background:red; color:white;">Delete Account</button>
+    <input type="password"><br><br>
+    <button id ="btncol">Change Password</button>
 </div>
 
 <div id = "box"> 
@@ -97,17 +102,21 @@ header {
 }
 footer {
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     background: white;
     border-top: 1px solid #ddd;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     width: 98.3%;
+    font-size: 12px;
 }
 #footer a {
     color: #5b4df5;
-    text-decoration: none;
 }
 
+#btncol{
+    background: #7b6cf6;
+    color: white;
+}
 </body>
 </html>
