@@ -19,7 +19,7 @@
     Email:<br>
     <input type="text" value="student@gmail.com"><br><br>
     <button id ="btncol">Update Profile</button>
-    <button style="background:red; color:white;">Delete Account</button>
+    <button style="background:red; color:white; cursor:pointer">Delete Account</button>
 </div>
 
 <div id= "box">
@@ -117,6 +117,7 @@ footer {
 #btncol{
     background: #7b6cf6;
     color: white;
+    cursor : pointer;
 }
 </body>
 </html>
