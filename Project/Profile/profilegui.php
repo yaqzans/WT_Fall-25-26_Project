@@ -33,12 +33,17 @@ Contact us:
 </footer>
 
 <style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f5fb;
+}
 #btn {
-    font-size: 18px;
-    background: none;
+    background: white;
     border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
     cursor: pointer;
-    color: white;
 }
 #header {
     display: flex;
