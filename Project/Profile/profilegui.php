@@ -11,11 +11,19 @@
 </header>
 <main>
 <section>
-<div id = "box">
-<h3>My Profile</h3>
-<p><b>Name:</b> Student</p>
-<p><b>Email:</b> student@gmail.com</p>
-<p id="credits">Credits: <b>42</b></p>
+<div id="box">
+    <h3>My Profile</h3>
+    Name:<br>
+    <input type="text" value="Student"><br><br>
+    Email:<br>
+    <input type="text" value="student@gmail.com"><br><br>
+    New Password:<br>
+    <input type="password"><br><br>
+    Confirm Password:<br>
+    <input type="password"><br>
+    <p>User ID: <b id = "uid">XYZ</b><span style="margin-left: 15px;">Credits: <b>42</b></p>
+    <button>Update Profile</button>
+    <button style="background:red; color:white;">Delete Account</button>
 </div>
 
 <div id = "box"> 
