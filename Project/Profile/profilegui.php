@@ -78,6 +78,7 @@ header {
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 #logout {
     background: white;
@@ -107,7 +108,7 @@ footer {
     border-top: 1px solid #ddd;
     position: fixed;
     bottom: 0px;
-    width: 98.3%;
+    width: 98.7%;
     font-size: 12px;
 }
 #footer a {
