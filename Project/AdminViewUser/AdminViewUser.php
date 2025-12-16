@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>User Profile</title>
+<title>Admin Views User Profile</title>
 </head>
+
 <body>
 <header> 
-<button id = "btn">← Back </button>
+<button id="btn">← Back</button>
 <h2>NeedSurveyResponses</h2>
-<button id = "logout">Logout</button>
 </header>
+
 <main>
 <section>
-<div id = "box">
-<h3>User XYZ Profile:</h3>
+
+<div id="box">
+<h3>User Profile</h3>
+
+<p><b>User ID:</b> <span id = "id">XYZ</span></p>
 <p><b>Name:</b> Student</p>
 <p><b>Email:</b> student@gmail.com</p>
-<p id="credits">Credits: <b>42</b></p>
+<p><b>Current Credits:</b> <span id="credits"><b>42</b></span></p>
+
+<button id="btncol">Add Credits</button>
+<button id="btncol">Remove Credits</button>
+<button style="background:red; color:white; cursor:pointer;">Delete User</button>
 </div>
 
-<div id = "box"> 
-<h3>My Surveys</h3>
+<div id="box">
+<h3>Survey History</h3>
+
 <div id="surveyItem">
 <b>Research Topic Selection Poll</b><br>
+<span id="meta">Status: Active</span><br>
 <span id="meta">Responses: 3 / 10</span>
 </div>
+
 <div id="surveyItem">
 <b>Learning Habits Survey</b><br>
-<span id="meta">Responses: 10 / 10 (Closed)</span>
+<span id="meta">Status: Closed</span><br>
+<span id="meta">Responses: 10 / 10</span>
 </div>
+</div>
+
 </section>
+</main>
+
 <footer>
 Contact us:
 <a href="mailto:shamvi.abdullah@gmail.com">click here</a>
@@ -40,18 +56,13 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f5fb;
 }
+
 section{
     max-width: 800px;
     margin: auto;
     padding: 20px;
 }
-#btn {
-    background: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-}
+
 header {
     display: flex;
     align-items: center;
@@ -60,21 +71,34 @@ header {
     background: #7b6cf6;
     color: white;
 }
+
+#btn {
+    background: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
 #box {
     background: white;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
 }
-#logout {
-    background: white;
-    border: none;
-    padding: 9px 18px;
-    border-radius: 6px;
+
+#credits {
+    color: #7b6cf6;
+}
+
+#btncol {
+    background: #7b6cf6;
+    color: white;
     cursor: pointer;
-    position: absolute;
-    right: 30px;
-    font-size: 16px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    margin-right: 10px;
 }
 
 #surveyItem {
@@ -83,23 +107,27 @@ header {
     border-radius: 6px;
     margin-bottom: 10px;
 }
+
 #meta {
     color: gray;
     font-size: 13px;
 }
+
 footer {
     text-align: center;
     padding: 15px;
     background: white;
     border-top: 1px solid #ddd;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     width: 98.3%;
+    font-size: 12px;
 }
-#footer a {
+
+footer a {
     color: #5b4df5;
-    text-decoration: none;
 }
+</style>
 
 </body>
 </html>
