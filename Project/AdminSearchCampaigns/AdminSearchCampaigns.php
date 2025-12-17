@@ -11,8 +11,11 @@
 <h2>NeedSurveyResponses</h2>
 </header>
 
-<section>
+<div id="searchBox">
+    <input type="text" placeholder="Search by Survey ID or Status">
+</div>
 
+<section>
 <div id="layout">
 
     <div id="left">
@@ -80,6 +83,14 @@ section {
     padding: 20px;
 }
 
+#searchBox {
+    margin-bottom: 20px;
+}
+
+#searchBox input {
+    width: 300px;
+    padding: 6px;
+}
 
 #layout {
     display: flex;
