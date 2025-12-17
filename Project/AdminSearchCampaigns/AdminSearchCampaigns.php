@@ -11,14 +11,15 @@
 <h2>NeedSurveyResponses</h2>
 </header>
 
-<div id="searchBox">
-    <input type="text" placeholder="Search by Survey ID or Status">
-</div>
-
 <section>
 <div id="layout">
 
     <div id="left">
+        
+        <div id="searchBox">
+            <input type="text" placeholder="Search by Survey ID or Status">
+        </div>
+
         <div id="box">
             <h3>Surveys</h3>
 
@@ -88,7 +89,7 @@ section {
 }
 
 #searchBox input {
-    width: 300px;
+    width: 97.6%;
     padding: 6px;
 }
 
