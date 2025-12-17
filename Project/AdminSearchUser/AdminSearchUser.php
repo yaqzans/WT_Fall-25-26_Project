@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Search Campaign Page</title>
+<title>Admin Search User Page</title>
 </head>
 
 <body>
+
 <header> 
 <button id="btn">← Back</button>
 <h2>NeedSurveyResponses</h2>
 </header>
 
-<main>
+<section>
+<div id="searchBox">
+    <input type="text" placeholder="Search by User ID">
+</div>
+<div id="box">
+    <h3>Users</h3>
+    <div id="userItem">
+        User ID: 101
+    </div>
+    <div id="userItem">
+        User ID: 102
+    </div>
+    <div id="userItem">
+        User ID: 103
+    </div>
+    <div id="userItem">
+        User ID: 104
+    </div>
+</div>
 
-</main>
+</section>
 
 <footer>
 Contact us:
@@ -43,9 +62,38 @@ header {
     cursor: pointer;
 }
 
+section {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+#box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#userItem {
+    background: #f7f7ff;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+#searchBox {
+    margin-bottom: 20px;
+}
+
+#searchBox input {
+    width: 98%;
+    padding: 6px;
+}
+
 footer {
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     background: white;
     border-top: 1px solid #ddd;
     position: fixed;

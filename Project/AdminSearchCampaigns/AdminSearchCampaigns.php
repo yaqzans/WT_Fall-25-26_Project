@@ -12,7 +12,7 @@
 
 <section>
 <div id="searchBox">
-    <input type="text" placeholder="Search by Survey ID or Status">
+    <input type="text" placeholder="Search by Survey ID">
 </div>
 <div id="layout">
     <div id="left">
