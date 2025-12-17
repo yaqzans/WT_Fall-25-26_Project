@@ -5,14 +5,45 @@
 </head>
 
 <body>
+
 <header> 
 <button id="btn">← Back</button>
 <h2>NeedSurveyResponses</h2>
 </header>
 
-<main>
+<section>
 
-</main>
+<div id="layout">
+
+    <div id="left">
+        <div id="box">
+            <h3>Surveys</h3>
+
+            <div id="surveyItem">
+                <b>Survey ID:</b> S101<br>
+                <span id="meta">Status: Open</span><br>
+                <span id="meta">Responses: 4 / 10</span><br>
+                <span id="meta">Date: 13/03/25</span>
+            </div>
+
+            <div id="surveyItem">
+                <b>Survey ID:</b> S102<br>
+                <span id="meta">Status: Closed</span><br>
+                <span id="meta">Responses: 10 / 10</span><br>
+                <span id="meta">Date: 10/03/25</span>
+            </div>
+
+            <div id="surveyItem">
+                <b>Survey ID:</b> S103<br>
+                <span id="meta">Status: Filled</span><br>
+                <span id="meta">Responses: 8 / 8</span><br>
+                <span id="meta">Date: 08/03/25</span>
+            </div>
+
+        </div>
+    </div>
+
+</section>
 
 <footer>
 Contact us:
@@ -43,9 +74,44 @@ header {
     cursor: pointer;
 }
 
+section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+
+#layout {
+    display: flex;
+    gap: 20px;
+}
+
+#left {
+    width: 60%;
+}
+
+#box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#surveyItem {
+    background: #f7f7ff;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+
+#meta {
+    color: gray;
+    font-size: 13px;
+}
+
 footer {
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     background: white;
     border-top: 1px solid #ddd;
     position: fixed;
