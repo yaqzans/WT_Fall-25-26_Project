@@ -44,12 +44,12 @@
   <body>
 
 <header>
-  <div>
-    <div>
-      <div></div>
-      <div>NeedSurveyResponses</div>
+  <div class="nav">
+    <div class="brand">
+      <div class="logo"></div>
+      <div class="site-name">NeedSurveyResponses</div>
     </div>
-    <div>Welcome Student</div>
+    <div class="welcome">Welcome Student</div>
   </div>
 </header>
 
