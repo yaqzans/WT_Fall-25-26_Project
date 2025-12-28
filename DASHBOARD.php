@@ -61,6 +61,14 @@
 
     .left-col { flex: 1; }
     .right-col { width: 340px; }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 8px 20px rgba(92,61,196,0.08);
+      margin-bottom: 16px;
+    }
   </style>
 </head>
 
@@ -77,7 +85,9 @@
 </header>
 
 <main>
-  <div class="left-col"></div>
+  <div class="left-col">
+    <div class="card"></div>
+  </div>
   <div class="right-col"></div>
 </main>
 
