@@ -69,6 +69,11 @@
       box-shadow: 0 8px 20px rgba(92,61,196,0.08);
       margin-bottom: 16px;
     }
+
+    .muted {
+      color: #6b6b7a;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 
@@ -86,7 +91,10 @@
 
 <main>
   <div class="left-col">
-    <div class="card"></div>
+    <div class="card">
+      <h2>Available Surveys</h2>
+      <div class="muted">Surveys posted by other participants.</div>
+    </div>
   </div>
   <div class="right-col"></div>
 </main>
