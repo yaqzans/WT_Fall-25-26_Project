@@ -80,6 +80,12 @@
       background: #f3f1ff;
       cursor: pointer;
     }
+    .survey-right {
+  text-align: right;
+  font-size: 0.85rem;
+  color: #6b6b7a;
+}
+
   </style>
 </head>
 
@@ -114,6 +120,12 @@
       <input type="text" placeholder="Title">
     </div>
   </div>
+  <div class="survey-right">
+  <div>12 Q • Open</div>
+  <div>Credits: 5</div>
+  <div>Responses: 7 / 10</div>
+  <div>Time: 2 min</div>
+</div>
 </main>
 </body>
 </html>
