@@ -94,6 +94,11 @@
     <div class="card">
       <h2>Available Surveys</h2>
       <div class="muted">Surveys posted by other participants.</div>
+      <!-- Inside Available Surveys card -->
+<ul class="survey-list">
+  <li class="survey-item"></li>
+</ul>
+
     </div>
   </div>
   <div class="right-col"></div>
