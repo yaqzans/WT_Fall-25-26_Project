@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="AdminViewUser.css">
 <title>Admin Views User Profile</title>
 </head>
 
@@ -49,85 +50,5 @@
 Contact us:
 <a href="mailto:shamvi.abdullah@gmail.com">click here</a>
 </footer>
-
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f5fb;
-}
-
-section{
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-}
-
-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 30px;
-    background: #7b6cf6;
-    color: white;
-}
-
-#btn {
-    background: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-#box {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-#credits {
-    color: #7b6cf6;
-}
-
-#btncol {
-    background: #7b6cf6;
-    color: white;
-    cursor: pointer;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    margin-right: 10px;
-}
-
-#surveyItem {
-    background: #f7f7ff;
-    padding: 10px;
-    border-radius: 6px;
-    margin-bottom: 10px;
-}
-
-#meta {
-    color: gray;
-    font-size: 13px;
-}
-
-footer {
-    text-align: center;
-    padding: 15px;
-    background: white;
-    border-top: 1px solid #ddd;
-    position: fixed;
-    bottom: 0px;
-    width: 99%;
-    font-size: 12px;
-}
-
-footer a {
-    color: #5b4df5;
-}
-</style>
-
 </body>
 </html>
