@@ -1,10 +1,12 @@
+<?php
+include "db.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="AdminSearchUser.css">
 <title>Admin Search User Page</title>
 </head>
-
 <body>
 
 <header> 
