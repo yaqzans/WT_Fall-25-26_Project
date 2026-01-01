@@ -25,12 +25,16 @@ $total_campaigns = $row_campaigns['total'];
     <div id="box">
         <h3>Userbase</h3>
         <p>Total Users: <?php echo $total_users; ?></p>
+        <a href="../AdminSearchUser/adminsearchuser.php">
         <button id="btncol">See More</button>
+        </a>
     </div>
     <div id="box">
         <h3>Campaigns</h3>
         <p>Total Campaigns: <?php echo $total_campaigns; ?></p>
+        <a href="../AdminSearchCampaigns/adminsearchcampaigns.php">
         <button id="btncol">See More</button>
+        </a>
     </div>
 </div>
 <div id="box">
