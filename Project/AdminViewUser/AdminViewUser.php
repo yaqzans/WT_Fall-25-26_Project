@@ -1,5 +1,9 @@
 <?php
 include "../db.php";
+if (!isset($_GET['id'])) {
+    die("User not found"); 
+}
+$uid = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html>

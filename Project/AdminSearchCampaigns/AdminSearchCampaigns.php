@@ -1,8 +1,6 @@
 <?php
 include "../db.php";
-
 $result = mysqli_query($conn, "SELECT * FROM campaigns");
-
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['cid']) && $_GET['cid'] != "") {
     $cid = $_GET['cid'];
     $result = mysqli_query($conn, "SELECT * FROM campaigns WHERE id = $cid");
@@ -18,7 +16,9 @@ $result1 = mysqli_query($conn, "SELECT * FROM ledger ORDER BY created_at DESC");
 
 <body>
 <header> 
-<button id="btn">← Back</button>
+<a href="../AdminPage/adminpage.php">
+    <button id="btn">← Back</button>
+</a>
 <h2>NeedSurveyResponses</h2>
 </header>
 

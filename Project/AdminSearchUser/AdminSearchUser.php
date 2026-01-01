@@ -17,7 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['uid']) && $_GET['uid'] !
 <body>
 
 <header> 
-<button id="btn">← Back</button>
+<a href="../AdminPage/adminpage.php">
+    <button id="btn">← Back</button>
+</a>
 <h2>NeedSurveyResponses</h2>
 </header>
 
