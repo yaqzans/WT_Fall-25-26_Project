@@ -33,10 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['uid']) && $_GET['uid'] !
 <div id="box">
     <h3>Users</h3>
 <?php
-while ($row = mysqli_fetch_assoc($result)) {
+while ($row = mysqli_fetch_assoc($result)) 
+{
+    echo '<a href="../AdminViewUser/AdminViewUser.php?id=' . $row['id'] . '">';
     echo '<div id="userItem">';
     echo 'User ID: ' . $row['id'];
     echo '</div>';
+    echo '</a>';
 }
 ?>
 </div>
