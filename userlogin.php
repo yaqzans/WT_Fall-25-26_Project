@@ -1,3 +1,31 @@
+<?php
+$email = $password = "";
+$emailErr = $passwordErr = "";
+$loginMsg = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    /* EMAIL */
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+    } else {
+        $email = $_POST["email"];
+    }
+
+    /* PASSWORD */
+    if (empty($_POST["password"])) {
+        $passwordErr = "Password is required";
+    } else {
+        $password = $_POST["password"];
+    }
+
+    /* Demo login success */
+    if ($emailErr == "" && $passwordErr == "") {
+        $loginMsg = "Login successful (demo)";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,7 +161,7 @@
     <form method="post" action="">
 
       <label>Email Address</label>
-      <input type="text" name="email">
+      <input type="text" name="email" value="<?php echo $email; ?>">
 
       <label>Password</label>
       <input type="password" name="password">
