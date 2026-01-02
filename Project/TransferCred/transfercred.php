@@ -1,9 +1,7 @@
 <?php
 include "../db.php";
-
 $sender_id = 1;   // temporary sender
 $error = "";
-
 $sender_res = mysqli_query($conn, "SELECT * FROM profiles WHERE user_id = $sender_id");
 $sender = mysqli_fetch_assoc($sender_res);
 
@@ -41,6 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             mysqli_query($conn,"UPDATE profiles SET credits = credits + $amount WHERE user_id = $receiver1");
             mysqli_query($conn,"INSERT INTO ledger (sender_id, receiver_id, amount) VALUES ($sender_id, $receiver1, $amount)");
         }
+        $sender_res = mysqli_query($conn, "SELECT * FROM profiles WHERE user_id = $sender_id");
+        $sender = mysqli_fetch_assoc($sender_res);
     }
 }
 ?>
