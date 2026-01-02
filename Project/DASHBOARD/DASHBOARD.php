@@ -35,6 +35,9 @@ if (isset($_POST['publish'])) {
         }
     }
 }
+
+
+$my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
 ?>
 
 <!doctype html>
@@ -86,7 +89,6 @@ if (isset($_POST['publish'])) {
           </div>
         </li>
 
-        <!-- RESTORED ITEM -->
         <li class="survey-item">
           <div class="survey-left">
             <div class="survey-title">Investigating Cognitive Load in Remote Education</div>
@@ -100,7 +102,6 @@ if (isset($_POST['publish'])) {
           </div>
         </li>
 
-        <!-- RESTORED ITEM -->
         <li class="survey-item">
           <div class="survey-left">
             <div class="survey-title">Evaluating Usability Metrics of Academic Platforms</div>
@@ -117,27 +118,42 @@ if (isset($_POST['publish'])) {
       </ul>
     </div>
 
+
     <div class="card">
       <h2>My Surveys</h2>
       <div class="muted">Surveys created by you.</div>
 
       <ul class="survey-list">
-        <li class="survey-item">
-          <div class="survey-left">
-            <div class="survey-title">Research Topic Selection Poll</div>
-            <small class="muted">Consensus study for the semester</small>
-          </div>
-          <div class="survey-right">
-            <div>5 Q • Open</div>
-            <div>Credits: 2</div>
-            <div>Responses: 3 / 10</div>
-            <div>Time: 1 min</div>
-          </div>
-        </li>
+
+        <?php
+        if (mysqli_num_rows($my_surveys_res) > 0) {
+            while ($row = mysqli_fetch_assoc($my_surveys_res)) {
+
+                echo '<li class="survey-item">';
+                echo '  <div class="survey-left">';
+                echo '    <div class="survey-title">' . htmlspecialchars($row['title']) . '</div>';
+                echo '    <small class="muted">' . htmlspecialchars($row['subtitle']) . '</small>';
+                echo '  </div>';
+                echo '  <div class="survey-right">';
+                echo '    <div>Open</div>';
+                echo '    <div>Credits: ' . $row['credit'] . '</div>';
+                echo '    <div>Responses: 0 / ' . $row['max_responses'] . '</div>';
+                echo '    <div>Time: ' . $row['time_minutes'] . ' min</div>';
+                echo '  </div>';
+                echo '</li>';
+            }
+        } else {
+            echo '<li class="survey-item">';
+            echo '<div class="survey-left"><small class="muted">No surveys created yet</small></div>';
+            echo '</li>';
+        }
+        ?>
+
       </ul>
     </div>
 
   </div>
+
 
   <div class="right-col">
     <div class="card">
