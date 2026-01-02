@@ -1,5 +1,6 @@
 <?php
-include "config.php";
+include "../config.php";
+
 
 $name = $email = $password = $confirm_password = "";
 $nameErr = $emailErr = $passwordErr = $confirmErr = "";
