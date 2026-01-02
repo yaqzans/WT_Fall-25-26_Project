@@ -1,7 +1,10 @@
 <?php
+session_start();
+include "../config.php";
+
 $email = $password = "";
 $emailErr = $passwordErr = "";
-$loginMsg = "";
+$loginErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -9,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
     } else {
-        $email = $_POST["email"];
+        $email = trim($_POST["email"]);
     }
 
     /* PASSWORD */
@@ -19,9 +22,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST["password"];
     }
 
-    /* Demo login success */
-    if ($emailErr == "" && $passwordErr == "") {
-        $loginMsg = "Login successful (demo)";
+    /* LOGIN CHECK */
+    if ($emailErr === "" && $passwordErr === "") {
+
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) === 1) {
+
+            $user = mysqli_fetch_assoc($result);
+
+            if (password_verify($password, $user['password'])) {
+
+                // ✅ LOGIN SUCCESS → CREATE SESSION
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_email'] = $user['email'];
+
+                // ✅ REDIRECT TO USER DASHBOARD
+                header("Location: ../DASHBOARD/DASHBOARD.php");
+                exit();
+
+            } else {
+                $loginErr = "Incorrect password";
+            }
+
+        } else {
+            $loginErr = "User not found";
+        }
     }
 }
 ?>
@@ -30,8 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
   <title>NeedSurveyResponses - Login</title>
-  <link rel="stylesheet" href="Userlogin.css"> 
-
+  <link rel="stylesheet" href="Userlogin.css">
 </head>
 
 <body>
@@ -48,11 +74,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <h1>Sign In</h1>
 
-    <?php if ($loginMsg != "") { ?>
-      <div class="success"><?php echo $loginMsg; ?></div>
+    <?php if ($loginErr != "") { ?>
+      <div class="error"><?php echo $loginErr; ?></div>
     <?php } ?>
 
-    <form method="post" action="">
+    <form method="post">
 
       <label>Email Address</label>
       <input type="text" name="email" value="<?php echo $email; ?>">
@@ -66,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="forgot">
           <a href="#">Forgot password?</a>
         </div>
-        <button type="submit"><a href="../DASHBOARD/DASHBOARD.php">Login</a></button>
+        <button type="submit">Login</button>
       </div>
 
     </form>
