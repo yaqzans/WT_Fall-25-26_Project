@@ -57,6 +57,33 @@
       font-weight: bold;
       color: #6c5ce7;
     }
+
+    /* HERO SECTION */
+    main {
+      width: 1100px;
+      max-width: 95%;
+      margin: 60px auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-line {
+      font-size: 36px;
+      margin-bottom: 16px;
+      color: #2d2a55;
+      letter-spacing: 0.5px;
+      font-weight: bold;
+    }
+
+    .hero-line span {
+      margin: 0 12px;
+      color: #6c5ce7;
+      font-weight: normal;
+    }
   </style>
 </head>
 
@@ -75,6 +102,14 @@
     </div>
   </div>
 </header>
+
+<main>
+  <div class="hero-text">
+    <h1 class="hero-line">
+      Share Surveys <span>|</span> Earn Credits <span>|</span> Support Research
+    </h1>
+  </div>
+</main>
 
 </body>
 </html>
