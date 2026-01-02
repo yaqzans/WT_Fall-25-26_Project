@@ -143,6 +143,14 @@
       color: #555;
       line-height: 1.5;
     }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 14px;
+    }
   </style>
 </head>
 
@@ -214,6 +222,10 @@
   </div>
 
 </section>
+
+<footer>
+  © 2025 NeedSurveyResponses • A collaborative survey-sharing platform
+</footer>
 
 </body>
 </html>
