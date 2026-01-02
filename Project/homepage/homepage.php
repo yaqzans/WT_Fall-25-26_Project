@@ -1,150 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
   <title>NeedSurveyResponses</title>
-
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f3fb;
-      color: #222;
-    }
-
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e6e6f0;
-      padding: 14px 0;
-    }
-
-    .nav {
-      width: 1100px;
-      max-width: 95%;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo {
-      width: 40px;
-      height: 40px;
-      background: #6c5ce7;
-      border-radius: 8px;
-    }
-
-    .site-name {
-      font-size: 18px;
-      font-weight: bold;
-      color: #5b3dd3;
-    }
-
-    .nav-actions a {
-      margin-left: 16px;
-      text-decoration: none;
-      font-weight: bold;
-      color: #6c5ce7;
-    }
-
-    main {
-      width: 1100px;
-      max-width: 95%;
-      margin: 60px auto;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-text {
-      flex: 1;
-    }
-
-    .hero-line {
-      font-size: 36px;
-      margin-bottom: 16px;
-      color: #2d2a55;
-      font-weight: bold;
-    }
-
-    .hero-line span {
-      margin: 0 12px;
-      color: #6c5ce7;
-      font-weight: normal;
-    }
-
-    .hero-text p {
-      font-size: 18px;
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-
-    .hero-text strong {
-      color: #5b3dd3;
-    }
-
-    .hero-buttons a {
-      display: inline-block;
-      padding: 12px 20px;
-      margin-right: 10px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 15px;
-    }
-
-    .btn-primary {
-      background: #6c5ce7;
-      color: white;
-    }
-
-    .btn-secondary {
-      border: 1px solid #6c5ce7;
-      color: #6c5ce7;
-      background: transparent;
-    }
-
-    .features {
-      width: 1100px;
-      max-width: 95%;
-      margin: 60px auto;
-      display: flex;
-      gap: 20px;
-    }
-
-    .feature-card {
-      background: white;
-      padding: 24px;
-      border-radius: 10px;
-      flex: 1;
-      box-shadow: 0 8px 20px rgba(92,61,196,0.08);
-    }
-
-    .feature-card h3 {
-      margin-bottom: 10px;
-      color: #2d2a55;
-    }
-
-    .feature-card p {
-      color: #555;
-      line-height: 1.5;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #777;
-      font-size: 14px;
-    }
-  </style>
+  <link rel="stylesheet" href="Homepage.css"> 
 </head>
 
 <body>
@@ -157,8 +15,8 @@
     </div>
 
     <div class="nav-actions">
-      <a href="signin.html">Sign In</a>
-      <a href="signuppage.php">Sign Up</a>
+      <a href="../Userlogin/userlogin.php">Sign In</a>
+      <a href="../Signuppage/signuppage.php">Sign Up</a>
     </div>
   </div>
 </header>
@@ -182,8 +40,8 @@
     </p>
 
     <div class="hero-buttons">
-      <a href="signuppage.php" class="btn-primary">Get Started</a>
-      <a href="signin.html" class="btn-secondary">Sign In</a>
+      <a href="../Signuppage/signuppage.php" class="btn-primary">Get Started</a>
+      <a href="../Userlogin/userlogin.php" class="btn-secondary">Sign In</a>
     </div>
   </div>
 </main>
