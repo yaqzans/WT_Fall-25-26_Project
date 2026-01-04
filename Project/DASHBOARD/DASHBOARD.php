@@ -54,17 +54,9 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
 
 <body>
 
-<header>
-  <div class="nav">
-    <div class="brand">
-      <div class="logo"></div>
-      <div class="site-name">NeedSurveyResponses</div>
-    </div>
-    <div class="welcome">
-      Welcome Student |
-      <a href="../Userlogin/userlogin.php" style="text-decoration:none; color:inherit;">Logout</a>
-    </div>
-  </div>
+<header> 
+<button id="btn">← Back</button>
+<h2>NeedSurveyResponses</h2>
 </header>
 
 <main>
