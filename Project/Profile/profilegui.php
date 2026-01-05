@@ -7,7 +7,13 @@ $errorpass = "";
 $successemail = "";
 $successpass = "";
 $userDeleted = false;
-
+$camp_res = mysqli_query($conn, "SELECT * FROM campaigns WHERE user_id = $uid");
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_campaign"])) 
+{
+    $cid = $_POST["delete_campaign"];
+    mysqli_query($conn, "DELETE FROM sessions WHERE campaign_id = $cid");
+    mysqli_query($conn, "DELETE FROM campaigns WHERE id = $cid AND user_id = $uid");
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     if (isset($_POST["delete_account"]))
@@ -119,6 +125,9 @@ while ($row = mysqli_fetch_assoc($camp_res))
     echo '<div id="surveyItem">';
     echo '<b>' . $row["title"] . '</b><br>';
     echo '<span id="meta">Responses: ' . $row["responses_served"] . ' / ' . $row["responses_needed"] . '</span>';
+    echo '<form method="post" style="margin-top:6px;">';
+    echo '<button style="background: #e74c3c; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-top: 6px;" name="delete_campaign" value="' . $row['id'] . '">Delete Survey</button>';
+    echo '</form>';
     echo '</div>';
 }
 if (mysqli_num_rows($camp_res) == 0)
