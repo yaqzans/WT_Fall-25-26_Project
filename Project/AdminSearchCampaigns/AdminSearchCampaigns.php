@@ -1,7 +1,8 @@
 <?php
 include "../db.php";
 $result = mysqli_query($conn, "SELECT * FROM campaigns");
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['cid']) && $_GET['cid'] != "") {
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['cid']) && $_GET['cid'] != "") 
+{
     $cid = $_GET['cid'];
     $result = mysqli_query($conn, "SELECT * FROM campaigns WHERE id = $cid");
 }
@@ -33,12 +34,14 @@ $result1 = mysqli_query($conn, "SELECT * FROM ledger ORDER BY created_at DESC");
         <div id="box">
             <h3>Surveys</h3>
             <?php
-            while ($row = mysqli_fetch_assoc($result)) {
+            while ($row = mysqli_fetch_assoc($result)) 
+                {
                     echo '<div id="surveyItem">';
                     echo '<b>Survey ID:</b> ' . $row['id'] . '<br>';
                     echo '<span id="meta">Status: ' . $row['status'] . '</span><br>';
                     echo '<span id="meta">Responses: ' . $row['responses_served'] . ' / ' . $row['responses_needed'] . '</span><br>';
                     echo '<span id="meta">Date: ' . $row['created_at'] . '</span>';
+                    echo '<button name="delete_campaign">Delete Survey</button>';
                     echo '</div>';
                 }
             ?> 
@@ -48,16 +51,19 @@ $result1 = mysqli_query($conn, "SELECT * FROM ledger ORDER BY created_at DESC");
         <div id="box">
             <h3>Transactions</h3>
             <?php
-            while ($t = mysqli_fetch_assoc($result1)) {
+            while ($t = mysqli_fetch_assoc($result1)) 
+            {
                 echo '<div id="transactionItem">';
                 if ($t['sender_id'] == NULL) 
                 {
                     echo 'System → User ' . $t['receiver_id'] . '<br>';
                 } 
-                else if ($t['receiver_id'] == NULL) {
+                else if ($t['receiver_id'] == NULL)
+                {
                     echo 'User ' . $t['sender_id'] . ' spent credits<br>';
                 } 
-                else {
+                else 
+                {
                     echo 'User ' . $t['sender_id'] . ' → User ' . $t['receiver_id'] . '<br>';
                 }
                 echo '<span id="meta">Credits:</span> ' . $t['amount'] . '<br>';

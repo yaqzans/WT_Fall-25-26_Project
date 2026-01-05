@@ -2,7 +2,8 @@
 include "../db.php";
 $result = mysqli_query($conn, "SELECT * FROM users");
 
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['uid']) && $_GET['uid'] != "") {
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['uid']) && $_GET['uid'] != "") 
+{
     $uid = $_GET['uid'];
     $result = mysqli_query($conn, "SELECT * FROM users WHERE id = $uid");
 }

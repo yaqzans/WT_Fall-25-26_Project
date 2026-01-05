@@ -1,7 +1,7 @@
 <?php
 include "../db.php";
 
-$uid = 9;   // temp user
+$uid = 1;   // temp user
 $erroremail = "";
 $errorpass = "";
 $successemail = "";

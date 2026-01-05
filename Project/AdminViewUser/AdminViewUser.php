@@ -28,7 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $amount = (int)$_POST["amount"];
 
-        if ($amount <= 0) {
+        if ($amount <= 0) 
+        {
             $creditError = "Amount must be greater than 0";
         }
         else 
