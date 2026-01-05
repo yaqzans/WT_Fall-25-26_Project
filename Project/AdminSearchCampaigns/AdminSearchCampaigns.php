@@ -8,10 +8,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_campaign"]))
     mysqli_query($conn, "DELETE FROM campaigns WHERE id = $cid");
 }
 $result = mysqli_query($conn, "SELECT * FROM campaigns");
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['cid']) && $_GET['cid'] != "") 
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['title']) && $_GET['title'] != "") 
 {
-    $cid = $_GET['cid'];
-    $result = mysqli_query($conn, "SELECT * FROM campaigns WHERE id = $cid");
+    $title = $_GET['title'];
+    $result = mysqli_query($conn,"SELECT * FROM campaigns WHERE title LIKE '%$title%'");
 }
 $result1 = mysqli_query($conn, "SELECT * FROM ledger ORDER BY created_at DESC");
 ?>
@@ -33,7 +33,7 @@ $result1 = mysqli_query($conn, "SELECT * FROM ledger ORDER BY created_at DESC");
 <section>
 <div id="searchBox">
     <form method="get">
-        <input type="text" name="cid" placeholder="Search by Campaign ID">
+            <input type="text" name="title" placeholder="Search by Survey Name">
     </form>
 </div>
 <div id="layout">
@@ -42,17 +42,22 @@ $result1 = mysqli_query($conn, "SELECT * FROM ledger ORDER BY created_at DESC");
             <h3>Surveys</h3>
             <?php
             while ($row = mysqli_fetch_assoc($result)) 
-                {
-                    echo '<div id="surveyItem">';
-                    echo '<b>Survey ID:</b> ' . $row['id'] . '<br>';
-                    echo '<span id="meta">Status: ' . $row['status'] . '</span><br>';
-                    echo '<span id="meta">Responses: ' . $row['responses_served'] . ' / ' . $row['responses_needed'] . '</span><br>';
-                    echo '<span id="meta">Date: ' . $row['created_at'] . '</span>';
-                    echo '<form method="post">';
-                    echo '<button style="background: #e74c3c; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-top: 6px;" name="delete_campaign" value="' . $row['id'] . '">Delete Survey</button>';
-                    echo '</form>';
-                    echo '</div>';
-                }
+            {
+                echo '<div id="surveyItem">';
+                echo '<b>' . $row['title'] . '</b><br>';
+                echo '<span id="meta">Survey ID: ' . $row['id'] . '</span><br>';
+                echo '<span id="meta">Status: ' . $row['status'] . '</span><br>';
+                echo '<span id="meta">Responses: ' . $row['responses_served'] . ' / ' . $row['responses_needed'] . '</span><br>';
+                echo '<span id="meta">Date: ' . $row['created_at'] . '</span>';
+                echo '<form method="post">';
+                echo '<button style="background: #e74c3c; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-top: 6px;" name="delete_campaign" value="' . $row['id'] . '">Delete Survey</button>';
+                echo '</form>';
+                echo '</div>';
+            }
+            if (mysqli_num_rows($result) == 0)
+            {
+                echo '<span id="meta">No surveys found</span>';
+            }
             ?> 
         </div>
     </div>

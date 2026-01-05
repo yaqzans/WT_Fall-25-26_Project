@@ -8,10 +8,8 @@ $uid = $_GET['id'];
 $amount = "";
 $creditError = "";
 $userDeleted = false;
-
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 { //I tried to use the empty error method but it wasnt working
-    
     if ($_POST["action"] == "delete") 
     {
         mysqli_query($conn, "DELETE FROM sessions WHERE user_id = $uid");
@@ -49,7 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     $amount = "";
 }
-
 $user_res = mysqli_query($conn, "SELECT * FROM users WHERE id = $uid"); //This is for general info
 $user = mysqli_fetch_assoc($user_res);
 if ($userDeleted || !$user) 
@@ -67,7 +64,6 @@ $camp_res = mysqli_query($conn, "SELECT * FROM campaigns WHERE user_id = $uid");
 <link rel="stylesheet" href="AdminViewUser.css">
 <title>Admin Views User Profile</title>
 </head>
-
 <body>
 <header> 
 <a href="../AdminSearchUser/adminsearchuser.php"> 
