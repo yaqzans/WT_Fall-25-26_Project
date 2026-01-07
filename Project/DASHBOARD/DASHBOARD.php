@@ -83,7 +83,9 @@ $available_surveys_res = mysqli_query(
         <!-- DEFAULT SURVEYS -->
         <li class="survey-item">
           <div class="survey-left">
-            <div class="survey-title">An Analytical Study on Digital Learning Adaptation</div>
+            <div class="survey-title"><a href="../Surveyviewpage/surveyviewpage.php?id=1001">
+            An Analytical Study on Digital Learning Adaptation
+            </a></div>
             <div class="muted">Exploring student adjustment trends</div>
           </div>
           <div class="survey-right">
@@ -96,7 +98,8 @@ $available_surveys_res = mysqli_query(
 
         <li class="survey-item">
           <div class="survey-left">
-            <div class="survey-title">Investigating Cognitive Load in Remote Education</div>
+            <div class="survey-title"><a href="../Surveyviewpage/surveyviewpage.php?id=1002">
+            Investigating Cognitive Load in Remote Education</a></div>
             <div class="muted">Measuring task complexity factors</div>
           </div>
           <div class="survey-right">
@@ -109,7 +112,8 @@ $available_surveys_res = mysqli_query(
 
         <li class="survey-item">
           <div class="survey-left">
-            <div class="survey-title">Evaluating Usability Metrics of Academic Platforms</div>
+            <div class="survey-title"><a href="../Surveyviewpage/surveyviewpage.php?id=1003">
+            Evaluating Usability Metrics of Academic Platforms</a></div>
             <div class="muted">User experience indicators</div>
           </div>
           <div class="survey-right">
@@ -124,7 +128,12 @@ $available_surveys_res = mysqli_query(
         while ($row = mysqli_fetch_assoc($available_surveys_res)) {
             echo '<li class="survey-item">';
             echo '<div class="survey-left">';
-            echo '<div class="survey-title">' . htmlspecialchars($row['title']) . '</div>';
+            echo '<div class="survey-title">
+            <a href="../Surveyviewpage/surveyviewpage.php?id=' . $row['id'] . '" style="color:inherit; text-decoration:none;">
+            ' . htmlspecialchars($row['title']) . '
+            </a>
+            </div>';
+
             echo '<div class="muted">' . htmlspecialchars($row['subtitle']) . '</div>';
             echo '</div>';
             echo '<div class="survey-right">';
@@ -149,7 +158,12 @@ $available_surveys_res = mysqli_query(
             while ($row = mysqli_fetch_assoc($my_surveys_res)) {
                 echo '<li class="survey-item">';
                 echo '<div class="survey-left">';
-                echo '<div class="survey-title">' . htmlspecialchars($row['title']) . '</div>';
+                echo '<div class="survey-title">
+                <a href="../Surveyviewpage/surveyviewpage.php?id=' . $row['id'] . '" style="color:inherit; text-decoration:none;">
+                ' . htmlspecialchars($row['title']) . '
+                </a>
+                </div>';
+
                 echo '<div class="muted">' . htmlspecialchars($row['subtitle']) . '</div>';
                 echo '</div>';
                 echo '<div class="survey-right">';
