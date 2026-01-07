@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-include "../config.php";
+include "../db.php";
 
 $error = "";
 $success = "";
@@ -113,6 +113,7 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
 
       </ul>
     </div>
+
     <div class="card">
       <h2>My Surveys</h2>
       <div class="muted">Surveys created by you.</div>
@@ -145,7 +146,6 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
     </div>
 
   </div>
-
 
   <div class="right-col">
 

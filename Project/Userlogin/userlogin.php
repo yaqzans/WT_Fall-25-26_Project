@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../config.php";
+include "../db.php";
 
 $email = $password = "";
 $emailErr = $passwordErr = "";
@@ -8,21 +8,18 @@ $loginErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    /* EMAIL */
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
     } else {
         $email = trim($_POST["email"]);
     }
 
-    /* PASSWORD */
     if (empty($_POST["password"])) {
         $passwordErr = "Password is required";
     } else {
         $password = $_POST["password"];
     }
 
-    /* LOGIN CHECK */
     if ($emailErr === "" && $passwordErr === "") {
 
         $sql = "SELECT * FROM users WHERE email = '$email'";
@@ -32,13 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $user = mysqli_fetch_assoc($result);
 
-            if (password_verify($password, $user['password'])) {
+            if ($password === $user['password']) {
 
-                // ✅ LOGIN SUCCESS → CREATE SESSION
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_email'] = $user['email'];
 
-                // ✅ REDIRECT TO USER DASHBOARD
                 header("Location: ../DASHBOARD/DASHBOARD.php");
                 exit();
 

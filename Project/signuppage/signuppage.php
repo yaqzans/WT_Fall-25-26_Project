@@ -1,22 +1,19 @@
 <?php
-include "../config.php";
+include "../db.php";
 
-
-$name = $email = $password = $confirm_password = "";
-$nameErr = $emailErr = $passwordErr = $confirmErr = "";
+$email = $password = $confirm_password = "";
+$emailErr = $passwordErr = $confirmErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if (empty($_POST["fullname"])) {
-        $nameErr = "Name is required";
-    } else {
-        $name = trim($_POST["fullname"]);
-    }
+    /* EMAIL */
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
     } else {
         $email = trim($_POST["email"]);
     }
+
+    /* PASSWORD */
     if (empty($_POST["password"])) {
         $passwordErr = "Password is required";
     } else {
@@ -35,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    /* CONFIRM PASSWORD */
     if (empty($_POST["confirm_password"])) {
         $confirmErr = "Confirm password is required";
     } else {
@@ -44,16 +42,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    /* INSERT USER (NO HASHING) */
     if (
-        empty($nameErr) &&
         empty($emailErr) &&
         empty($passwordErr) &&
         empty($confirmErr)
     ) {
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO users (fullname, email, password)
-                VALUES ('$name', '$email', '$hashedPassword')";
+        $sql = "INSERT INTO users (email, password)
+                VALUES ('$email', '$password')";
 
         if (mysqli_query($conn, $sql)) {
             header("Location: ../DASHBOARD/DASHBOARD.php");
@@ -69,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
 <title>NeedSurveyResponses - Sign Up</title>
-<link rel="stylesheet" href="signuppage.css"> 
+<link rel="stylesheet" href="signuppage.css">
 
 <script>
 function togglePassword() {
@@ -103,10 +100,6 @@ function togglePassword() {
 
 <form method="post">
 
-<label>Full Name</label>
-<input type="text" name="fullname" value="<?php echo $name; ?>">
-<div class="error"><?php echo $nameErr; ?></div>
-
 <label>Email</label>
 <input type="text" name="email" value="<?php echo $email; ?>">
 <div class="error"><?php echo $emailErr; ?></div>
@@ -132,7 +125,7 @@ function togglePassword() {
 </div>
 
 <div class="actions">
-<button type="reset" class="btn-secondary"><a href="../Homepage/Homepage.php">Discard</button>
+<button type="reset" class="btn-secondary"><a href="../Homepage/Homepage.php">Discard</a></button>
 <button type="submit" class="btn-primary">Sign Up</button>
 </div>
 
