@@ -58,9 +58,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 <header>
-  <button id="btn"><a href="../Userlogin/userlogin.php">Logout</a></button>
+  <a href="../homepage/homepage.php">
+  <button id="btn">Back</a></button>
   <h2>NeedSurveyResponses</h2>
 </header>
+
 
 <main>
   <div class="card">

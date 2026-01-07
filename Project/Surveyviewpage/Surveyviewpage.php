@@ -74,7 +74,7 @@ if (isset($default_surveys[$id])) {
 <body>
 
 <header>
-  <button id="btn"><a href="../Userlogin/userlogin.php">Logout</a></button>
+  <button id="btn"><a href="../Dashboard/Dashboard.php">Logout</a></button>
   <h2>NeedSurveyResponses</h2>
 </header>
 
