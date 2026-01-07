@@ -87,7 +87,7 @@ function togglePassword() {
 <body>
 
 <header>
-  <button id="btn"><a href="../Userlogin/userlogin.php">Logout</a></button>
+  <button id="btn"><a href="../homepage/homepage.php"><- Back</a></button>
   <h2>NeedSurveyResponses</h2>
 </header>
 
