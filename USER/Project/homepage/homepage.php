@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>NeedSurveyResponses</title>
+  <link rel="stylesheet" href="Homepage.css"> 
+</head>
+
+<body>
+
+<header>
+  <button id="btn"><a href="../Userlogin/userlogin.php">Logout</a></button>
+  <h2>NeedSurveyResponses</h2>
+</header>
+
+<main>
+  <div class="hero-text">
+    <h1 class="hero-line">
+      Share Surveys <span>|</span> Earn Credits <span>|</span> Support Research
+    </h1>
+
+    <p>
+      <strong>NeedSurveyResponses</strong> is a collaborative survey-sharing platform
+      where students and researchers create opportunities by
+      sharing surveys and participating in others’ research.
+    </p>
+
+    <p>
+      Publish your own survey, collect responses efficiently,
+      and earn credits by helping others complete their studies —
+      all in one simple and structured platform.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="../Signuppage/signuppage.php" class="btn-primary">Get Started</a>
+      <a href="../Userlogin/userlogin.php" class="btn-secondary">Sign In</a>
+    </div>
+  </div>
+</main>
+
+<section class="features">
+
+  <div class="feature-card">
+    <h3>Create and Share Surveys</h3>
+    <p>
+      Upload your Google Forms survey and reach a focused audience
+      that is genuinely interested in participating.
+    </p>
+  </div>
+
+  <div class="feature-card">
+    <h3>Earn Credits by Participating</h3>
+    <p>
+      Complete surveys posted by others and earn credit points
+      that allow you to publish your own surveys.
+    </p>
+  </div>
+
+  <div class="feature-card">
+    <h3>Support Academic Research</h3>
+    <p>
+      Contribute to meaningful academic and social research
+      while helping fellow students achieve their research goals.
+    </p>
+  </div>
+
+</section>
+
+<footer>
+  © 2025 NeedSurveyResponses • A collaborative survey-sharing platform
+</footer>
+
+</body>
+</html>
