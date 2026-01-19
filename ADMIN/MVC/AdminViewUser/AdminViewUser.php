@@ -1,5 +1,5 @@
 <?php
-include "../db.php";
+include "../db/asc.php";
 if (!isset($_GET['id'])) 
 {
     die("User not found"); 
@@ -61,7 +61,7 @@ $camp_res = mysqli_query($conn, "SELECT * FROM campaigns WHERE user_id = $uid");
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="AdminViewUser.css">
+<link rel="stylesheet" href="../css/AdminViewUser.css">
 <title>Admin Views User Profile</title>
 </head>
 <body>
