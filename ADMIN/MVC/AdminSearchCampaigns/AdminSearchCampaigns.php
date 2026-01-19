@@ -14,7 +14,7 @@ $result1 = getLedger();
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="AdminSearchCampaigns.css">
+<link rel="stylesheet" href="../css/AdminSearchCampaigns.css">
 <title>Admin Search Campaign Page</title>
 </head>
 
