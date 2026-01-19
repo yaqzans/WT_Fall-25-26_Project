@@ -1,8 +1,13 @@
 <?php
+session_start();
 include "../db/pg.php";
 
-$uid = 1; // temp user
+if (!isset($_SESSION['user_id'])) {
+    header("Location:../../../ADMIN/MVC/php/userlogin.php");
+    exit;
+}
 
+$uid = $_SESSION['user_id'];
 $erroremail = "";
 $errorpass = "";
 $successemail = "";

@@ -1,9 +1,17 @@
 <?php
+session_start();
 include "../db/tc.php";
 
-$sender_id = 1;   // temporary sender
+if (!isset($_SESSION['user_id'])) {
+    header("Location:../../../ADMIN/MVC/php/userlogin.php");
+    exit;
+}
+
+$sender_id = $_SESSION['user_id'];
 $error = "";
+
 $sender = mysqli_fetch_assoc(getProfile($sender_id));
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
