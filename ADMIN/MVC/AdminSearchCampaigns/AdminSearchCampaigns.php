@@ -1,20 +1,16 @@
 <?php
-include "../db/db.php";
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_campaign"])) 
-{
-    $cid = $_POST["delete_campaign"];
+include "../db/asc.php";
 
-    mysqli_query($conn, "DELETE FROM sessions WHERE campaign_id = $cid");
-    mysqli_query($conn, "DELETE FROM campaigns WHERE id = $cid");
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_campaign"])) {
+    deleteCampaign($_POST["delete_campaign"]);
 }
-$result = mysqli_query($conn, "SELECT * FROM campaigns");
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['title']) && $_GET['title'] != "") 
-{
-    $title = $_GET['title'];
-    $result = mysqli_query($conn,"SELECT * FROM campaigns WHERE title LIKE '%$title%'");
-}
-$result1 = mysqli_query($conn, "SELECT * FROM ledger ORDER BY created_at DESC");
+
+$title = $_GET['title'] ?? null;
+
+$result  = getCampaigns($title);
+$result1 = getLedger();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
