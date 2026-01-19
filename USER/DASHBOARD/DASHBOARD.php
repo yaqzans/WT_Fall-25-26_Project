@@ -76,51 +76,6 @@ $available_surveys_res = mysqli_query(
       <h2>Available Surveys</h2>
       <div class="muted">Surveys posted by other participants.</div>
 
-      <ul class="survey-list">
-
-        <li class="survey-item">
-          <div class="survey-left">
-            <div class="survey-title"><a href="../Surveyviewpage/surveyviewpage.php?id=1001">
-            An Analytical Study on Digital Learning Adaptation
-            </a></div>
-            <div class="muted">Exploring student adjustment trends</div>
-          </div>
-          <div class="survey-right">
-            <div>12 Q • Open</div>
-            <div>Credits: 5</div>
-            <div>Responses: 7 / 10</div>
-            <div>Time: 2 min</div>
-          </div>
-        </li>
-
-        <li class="survey-item">
-          <div class="survey-left">
-            <div class="survey-title"><a href="../Surveyviewpage/surveyviewpage.php?id=1002">
-            Investigating Cognitive Load in Remote Education</a></div>
-            <div class="muted">Measuring task complexity factors</div>
-          </div>
-          <div class="survey-right">
-            <div>10 Q • Open</div>
-            <div>Credits: 4</div>
-            <div>Responses: 5 / 10</div>
-            <div>Time: 3 min</div>
-          </div>
-        </li>
-
-        <li class="survey-item">
-          <div class="survey-left">
-            <div class="survey-title"><a href="../Surveyviewpage/surveyviewpage.php?id=1003">
-            Evaluating Usability Metrics of Academic Platforms</a></div>
-            <div class="muted">User experience indicators</div>
-          </div>
-          <div class="survey-right">
-            <div>8 Q • Closed</div>
-            <div>Credits: 3</div>
-            <div>Responses: 10 / 10</div>
-            <div>Time: 1 min</div>
-          </div>
-        </li>
-
         <?php
         while ($row = mysqli_fetch_assoc($available_surveys_res)) {
             echo '<li class="survey-item">';
