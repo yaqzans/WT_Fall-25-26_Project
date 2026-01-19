@@ -9,7 +9,6 @@ $successemail = "";
 $successpass = "";
 $userDeleted = false;
 
-/* POST actions */
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (isset($_POST["delete_campaign"])) {
@@ -43,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-/* FETCH DATA */
 $user_res = getUser($uid);
 $user = mysqli_fetch_assoc($user_res);
 
