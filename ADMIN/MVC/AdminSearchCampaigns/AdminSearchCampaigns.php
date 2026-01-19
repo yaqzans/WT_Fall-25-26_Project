@@ -1,5 +1,5 @@
 <?php
-include "../db.php";
+include "../db/db.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_campaign"])) 
 {
     $cid = $_POST["delete_campaign"];
