@@ -5,47 +5,62 @@ if (!isset($_GET['id'])) {
     die("Survey not found");
 }
 
-$id = (int)$_GET['id'];
+$id = (int) $_GET['id'];
 
-$default_surveys = [
-    1001 => [
-        "title" => "An Analytical Study on Digital Learning Adaptation",
-        "subtitle" => "Exploring student adjustment trends in digital learning environments",
-        "questions" => 12,
-        "status" => "Open",
-        "credit" => 5,
-        "responses" => "7 / 10",
-        "time" => "2 minutes",
-        "link" => "https://forms.gle/examplelink"
-    ],
-    1002 => [
-        "title" => "Investigating Cognitive Load in Remote Education",
-        "subtitle" => "Measuring task complexity factors",
-        "questions" => 10,
-        "status" => "Open",
-        "credit" => 4,
-        "responses" => "5 / 10",
-        "time" => "3 minutes",
-        "link" => "https://forms.gle/examplelink"
-    ],
-    1003 => [
-        "title" => "Evaluating Usability Metrics of Academic Platforms",
-        "subtitle" => "User experience indicators",
-        "questions" => 8,
-        "status" => "Closed",
-        "credit" => 3,
-        "responses" => "10 / 10",
-        "time" => "1 minute",
-        "link" => "https://forms.gle/examplelink"
-    ]
-];
-if (isset($default_surveys[$id])) {
-    $survey = $default_surveys[$id];
-} else {
+/* ==================================================
+   PRESET SURVEYS (IDs >= 1000)
+   ================================================== */
+if ($id >= 1000) {
 
-    
+    if ($id == 1001) {
+        $survey = [
+            "title" => "An Analytical Study on Digital Learning Adaptation",
+            "subtitle" => "Exploring student adjustment trends in digital learning environments",
+            "questions" => 12,
+            "status" => "Open",
+            "credit" => 5,
+            "responses" => "7 / 10",
+            "time_minutes" => 2,
+            "link" => "https://forms.gle/examplelink"
+        ];
+    }
+    elseif ($id == 1002) {
+        $survey = [
+            "title" => "Investigating Cognitive Load in Remote Education",
+            "subtitle" => "Measuring task complexity factors",
+            "questions" => 10,
+            "status" => "Open",
+            "credit" => 4,
+            "responses" => "5 / 10",
+            "time_minutes" => 3,
+            "link" => "https://forms.gle/examplelink"
+        ];
+    }
+    elseif ($id == 1003) {
+        $survey = [
+            "title" => "Evaluating Usability Metrics of Academic Platforms",
+            "subtitle" => "User experience indicators",
+            "questions" => 8,
+            "status" => "Closed",
+            "credit" => 3,
+            "responses" => "10 / 10",
+            "time_minutes" => 1,
+            "link" => "https://forms.gle/examplelink"
+        ];
+    }
+    else {
+        die("Survey not found");
+    }
+
+}
+/* ==================================================
+   DATABASE SURVEYS (IDs < 1000)
+   ================================================== */
+else {
+
     $res = mysqli_query($conn, "SELECT * FROM surveys WHERE id = $id");
-    if (mysqli_num_rows($res) !== 1) {
+
+    if (!$res || mysqli_num_rows($res) !== 1) {
         die("Survey not found");
     }
 
@@ -58,7 +73,7 @@ if (isset($default_surveys[$id])) {
         "status" => "Open",
         "credit" => $row['credit'],
         "responses" => "0 / " . $row['max_responses'],
-        "time" => $row['time_minutes'] . " minutes",
+        "time_minutes" => $row['time_minutes'],
         "link" => $row['form_link']
     ];
 }
@@ -74,7 +89,7 @@ if (isset($default_surveys[$id])) {
 <body>
 
 <header>
-  <button id="btn"><a href="../Dashboard/Dashboard.php">Logout</a></button>
+  <button id="btn" onclick="history.back()">← Back</button>
   <h2>NeedSurveyResponses</h2>
 </header>
 
@@ -110,7 +125,7 @@ if (isset($default_surveys[$id])) {
 
     <div class="info-row">
       <div class="label">Estimated Time</div>
-      <div class="value"><?php echo $survey['time']; ?></div>
+      <div class="value"><?php echo $survey['time_minutes']; ?> minutes</div>
     </div>
 
     <div class="link-box">
@@ -122,7 +137,9 @@ if (isset($default_surveys[$id])) {
 
     <div class="actions">
       <button class="btn ghost" onclick="history.back()">Go Back</button>
-      <button class="btn primary">Start Survey</button>
+      <a href="../verificationpage/verificationpage.php?id=<?php echo $id; ?>" class="btn primary">
+        Start Survey
+      </a>
     </div>
 
   </div>
