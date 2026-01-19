@@ -1,19 +1,16 @@
 <?php
-include "../db.php";
-$result = mysqli_query($conn, "SELECT * FROM users");
-
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['uid']) && $_GET['uid'] != "") 
-{
-    $uid = $_GET['uid'];
-    $result = mysqli_query($conn, "SELECT * FROM users WHERE id = $uid");
+include "../db/asu.php";
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['uid']) && $_GET['uid'] !== "") {
+    $result = getUserById($_GET['uid']);
+} else {
+    $result = getAllUsers();
 }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="AdminSearchUser.css">
-<title>Admin Search User Page</title>
+<link rel="stylesheet" href="../css/AdminSearchUser.css"><title>Admin Search User Page</title>
 </head>
 <body>
 
@@ -36,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['uid']) && $_GET['uid'] !
 <?php
 while ($row = mysqli_fetch_assoc($result)) 
 {
-    echo '<a href="../AdminViewUser/AdminViewUser.php?id=' . $row['id'] . '">';
+    echo '<a href="../php/AdminViewUser.php?id=' . $row['id'] . '">';
     echo '<div id="userItem">';
     echo 'User ID: ' . $row['id'];
     echo '</div>';
