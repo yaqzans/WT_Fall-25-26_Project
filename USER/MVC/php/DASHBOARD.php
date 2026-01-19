@@ -101,10 +101,19 @@ $available_surveys_res = mysqli_query(
 
 <body>
 
-<header>
-  <button id="btn"><a href="../php/userlogin.php">Logout</a></button>
-  <h2>NeedSurveyResponses</h2>
+<header class="top-header">
+  <div class="header-left">
+    <button id="btn">
+      <a href="../php/userlogin.php">Logout</a>
+    </button>
+    <h2>NeedSurveyResponses</h2>
+  </div>
+
+  <div class="header-right">
+    <a href="../Php/Homepage.php" class="profile-link">My Profile</a>
+  </div>
 </header>
+
 
 <main>
 
