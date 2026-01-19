@@ -1,9 +1,3 @@
-<?php
-include "../db/ap.php";
-$total_users     = getTotalUsers();
-$total_campaigns = getTotalCampaigns();
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
