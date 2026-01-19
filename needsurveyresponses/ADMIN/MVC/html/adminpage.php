@@ -7,7 +7,7 @@
 
 <body>
 <header> 
-<button id="btn">← Back</button>
+<a href="../../../USER/MVC/php/DASHBOARD.php"><button id="btn">← Back</button></a>
 <h2>NeedSurveyResponses</h2>
 </header>
 
@@ -30,10 +30,14 @@
 </div>
 <div id="box">
     <h3>Make Announcement</h3>
-    Announcement Message:<br>
-    <textarea rows="4" style="width:98%;"></textarea><br><br>
-    <button id="btncol">Post Announcement</button>
+    <form method="post">
+        Announcement Message:<br>
+        <textarea name="announcement" rows="4" style="width:98%;"></textarea><br><br>
+        <button id="btncol" name="post_announcement">Post Announcement</button>
+    </form>
 </div>
+
+
 
 </section>
 

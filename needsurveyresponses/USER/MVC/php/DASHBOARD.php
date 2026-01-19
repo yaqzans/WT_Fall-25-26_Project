@@ -7,6 +7,11 @@ if (!isset($_SESSION['user_id'])) {
 
 include "../db/db.php";
 $uid = $_SESSION['user_id'];
+$ann = "";
+$res = mysqli_query($conn, "SELECT message FROM announcement LIMIT 1");
+if ($row = mysqli_fetch_assoc($res)) {
+    $ann = $row["message"];
+}
 
 $creditRes = mysqli_query(
     $conn,
@@ -232,4 +237,10 @@ $available_surveys_res = mysqli_query(
 </main>
 
 </body>
+<?php if ($ann !== " ") { ?>
+<script>
+    alert("<?php echo $ann; ?>");
+</script>
+<?php } ?>
+
 </html>
