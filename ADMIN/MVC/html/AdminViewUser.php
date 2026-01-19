@@ -6,7 +6,7 @@
 </head>
 <body>
 <header> 
-<a href="../AdminSearchUser/adminsearchuser.php"> 
+<a href="../php/AdminSearchUser.php"> 
 <button id="btn">← Back</button> 
 </a>
 <h2>NeedSurveyResponses</h2>

@@ -7,7 +7,7 @@
 
 <body>
 <header> 
-<a href="../AdminPage/adminpage.php">
+<a href="../php/adminpage.php">
     <button id="btn">← Back</button>
 </a>
 <h2>NeedSurveyResponses</h2>
