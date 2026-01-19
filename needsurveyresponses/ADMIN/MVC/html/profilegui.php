@@ -8,7 +8,7 @@
 <header> 
 <a href="../../../USER/MVC/php/DASHBOARD.php"><button id = "btn">← Back </button></a>
 <h2>NeedSurveyResponses</h2>
-<button id = "logout">Logout</button>
+<button id = "logout"><a href="../../../USER/MVC/php/userlogin.php">Logout</a></button>
 </header>
 <main>
 <section>
@@ -43,7 +43,7 @@
     </form>
 </div>
 
-<div id = "box"> 
+<!-- <div id = "box"> 
 <h3>My Surveys</h3>
 <?php
 while ($row = mysqli_fetch_assoc($camp_res))
@@ -61,6 +61,7 @@ if (mysqli_num_rows($camp_res) == 0)
     echo '<span id="meta">No surveys created</span>';
 }
 ?>
+</div> -->
 </section>
 <footer>
 Contact us:
