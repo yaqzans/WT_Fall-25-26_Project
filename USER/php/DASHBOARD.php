@@ -1,16 +1,14 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../Userlogin/userlogin.php");
+    header("Location: ../php/userlogin.php");
     exit();
 }
 
-include "../db.php";
+include "../db/db.php";
 $uid = $_SESSION['user_id'];
 
-/* ===== FIX STARTS HERE ===== */
 
-// TRY TO FETCH CREDITS
 $creditRes = mysqli_query(
     $conn,
     "SELECT credits FROM profiles WHERE user_id = $uid"
@@ -18,7 +16,6 @@ $creditRes = mysqli_query(
 
 $creditRow = mysqli_fetch_assoc($creditRes);
 
-// IF PROFILE DOES NOT EXIST → CREATE IT
 if ($creditRow === null) {
 
     mysqli_query(
@@ -33,7 +30,7 @@ if ($creditRow === null) {
     $userCredits = $creditRow['credits'];
 }
 
-/* ===== FIX ENDS HERE ===== */
+
 
 $error = "";
 $success = "";
@@ -85,13 +82,13 @@ $available_surveys_res = mysqli_query(
 <html>
 <head>
   <title>NeedSurveyResponses — Dashboard</title>
-  <link rel="stylesheet" href="DASHBOARD.css">
+  <link rel="stylesheet" href="../css/DASHBOARD.css">
 </head>
 
 <body>
 
 <header>
-  <button id="btn"><a href="../Userlogin/userlogin.php">Logout</a></button>
+  <button id="btn"><a href="../php/userlogin.php">Logout</a></button>
   <h2>NeedSurveyResponses</h2>
 </header>
 
@@ -109,7 +106,7 @@ $available_surveys_res = mysqli_query(
             echo '<li class="survey-item">';
             echo '<div class="survey-left">';
             echo '<div class="survey-title">
-                  <a href="../Surveyviewpage/surveyviewpage.php?id=' . $row['id'] . '" style="color:inherit; text-decoration:none;">
+                  <a href="../php/surveyviewpage.php?id=' . $row['id'] . '" style="color:inherit; text-decoration:none;">
                   ' . htmlspecialchars($row['title']) . '
                   </a>
                   </div>';
@@ -138,7 +135,7 @@ $available_surveys_res = mysqli_query(
                 echo '<li class="survey-item">';
                 echo '<div class="survey-left">';
                 echo '<div class="survey-title">
-                      <a href="../Surveyviewpage/surveyviewpage.php?id=' . $row['id'] . '" style="color:inherit; text-decoration:none;">
+                      <a href="../php/surveyviewpage.php?id=' . $row['id'] . '" style="color:inherit; text-decoration:none;">
                       ' . htmlspecialchars($row['title']) . '
                       </a>
                       </div>';

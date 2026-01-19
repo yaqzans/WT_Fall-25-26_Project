@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../db.php";
+include "../db/db.php";
 
 if (!isset($_SESSION['user_id']) || !isset($_GET['id'])) {
     die("Access denied");
@@ -17,7 +17,6 @@ if (mysqli_num_rows($res) !== 1) {
 
 $survey = mysqli_fetch_assoc($res);
 
-/* ADD CREDIT ON COMPLETION */
 if (isset($_POST['complete'])) {
 
     $credit = (int)$survey['credit'];
@@ -29,7 +28,7 @@ if (isset($_POST['complete'])) {
          WHERE user_id = $uid"
     );
 
-    header("Location: ../Dashboard/Dashboard.php");
+    header("Location: ../php/DASHBOARD.php");
     exit();
 }
 ?>
@@ -162,7 +161,6 @@ main {
     <div class="actions">
       <button class="btn ghost" onclick="history.back()">Go Back</button>
 
-      <!-- IMPORTANT: keep id in URL -->
       <form method="post" action="">
         <button id="completeBtn" name="complete" class="btn primary" disabled>
           Survey Completed

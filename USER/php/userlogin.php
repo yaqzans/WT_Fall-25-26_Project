@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../db.php";
+include "../db/db.php";
 
 $email = $password = "";
 $emailErr = $passwordErr = "";
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_email'] = $user['email'];
 
-                header("Location: ../DASHBOARD/DASHBOARD.php");
+                header("Location: ../php/DASHBOARD.php");
                 exit();
 
             } else {
@@ -52,13 +52,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
   <title>NeedSurveyResponses - Login</title>
-  <link rel="stylesheet" href="Userlogin.css">
+  <link rel="stylesheet" href="../css/Userlogin.css">
 </head>
 
 <body>
 
 <header>
-  <a href="../homepage/homepage.php">
+  <a href="../php/homepage.php">
   <button id="btn">Back</a></button>
   <h2>NeedSurveyResponses</h2>
 </header>
@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="extra">
       Don’t have an account?
-      <a href="../Signuppage/signuppage.php">Sign Up</a>
+      <a href="../php/signuppage.php">Sign Up</a>
     </div>
 
   </div>

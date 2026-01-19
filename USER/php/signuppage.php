@@ -1,19 +1,19 @@
 <?php
-include "../db.php";
+include "../db/db.php";
 
 $email = $password = $confirm_password = "";
 $emailErr = $passwordErr = $confirmErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    /* EMAIL */
+
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
     } else {
         $email = trim($_POST["email"]);
     }
 
-    /* PASSWORD */
+
     if (empty($_POST["password"])) {
         $passwordErr = "Password is required";
     } else {
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    /* CONFIRM PASSWORD */
+
     if (empty($_POST["confirm_password"])) {
         $confirmErr = "Confirm password is required";
     } else {
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    /* INSERT USER + CREATE PROFILE WITH 0 CREDITS */
+
     if (
         empty($emailErr) &&
         empty($passwordErr) &&
@@ -54,17 +54,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mysqli_query($conn, $sql)) {
 
-            /* GET NEW USER ID */
+
             $newUserId = mysqli_insert_id($conn);
 
-            /* CREATE PROFILE WITH 0 CREDITS */
+
             mysqli_query(
                 $conn,
                 "INSERT INTO profiles (user_id, credits)
                  VALUES ($newUserId, 0)"
             );
 
-            header("Location: ../DASHBOARD/DASHBOARD.php");
+            header("Location: ../php/DASHBOARD.php");
             exit();
 
         } else {
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
 <title>NeedSurveyResponses - Sign Up</title>
-<link rel="stylesheet" href="signuppage.css">
+<link rel="stylesheet" href="../css/signuppage.css">
 
 <script>
 function togglePassword() {
@@ -99,7 +99,7 @@ function togglePassword() {
 <body>
 
 <header>
-  <button id="btn"><a href="../homepage/homepage.php"><- Back</a></button>
+  <button id="btn"><a href="../php/homepage.php"><- Back</a></button>
   <h2>NeedSurveyResponses</h2>
 </header>
 
@@ -136,7 +136,7 @@ function togglePassword() {
 
 <div class="actions">
 <button type="reset" class="btn-secondary">
-  <a href="../Homepage/Homepage.php">Discard</a>
+  <a href="../php/homepage.php">Discard</a>
 </button>
 <button type="submit" class="btn-primary">Sign Up</button>
 </div>
