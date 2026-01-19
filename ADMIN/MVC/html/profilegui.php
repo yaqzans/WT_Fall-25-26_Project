@@ -6,7 +6,7 @@
 </head>
 <body>
 <header> 
-<button id = "btn">← Back </button>
+<a href="../../../USER/MVC/php/DASHBOARD.php"><button id = "btn">← Back </button></a>
 <h2>NeedSurveyResponses</h2>
 <button id = "logout">Logout</button>
 </header>
