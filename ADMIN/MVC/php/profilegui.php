@@ -6,6 +6,10 @@ if (!isset($_SESSION['user_id'])) {
     header("Location:../../../ADMIN/MVC/php/userlogin.php");
     exit;
 }
+if($_SESSION['user_id'] == 1 || $_SESSION['user_id'] == 2){
+    header("Location:../../../ADMIN/MVC/php/adminpage.php");
+    exit;
+}
 
 $uid = $_SESSION['user_id'];
 $erroremail = "";

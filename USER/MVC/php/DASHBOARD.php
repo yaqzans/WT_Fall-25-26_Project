@@ -110,7 +110,7 @@ $available_surveys_res = mysqli_query(
   </div>
 
   <div class="header-right">
-    <a href="../Php/Homepage.php" class="profile-link">My Profile</a>
+    <a href="../../../ADMIN/MVC/php/profilegui.php" class="profile-link">My Profile</a>
   </div>
 </header>
 
