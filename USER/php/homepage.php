@@ -8,7 +8,6 @@
 <body>
 
 <header>
-  <button id="btn"><a href="../php/userlogin.php">Logout</a></button>
   <h2>NeedSurveyResponses</h2>
 </header>
 
