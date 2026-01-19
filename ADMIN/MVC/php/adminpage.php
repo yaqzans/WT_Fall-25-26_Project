@@ -1,12 +1,9 @@
 <?php
 include "../db/ap.php";
-$res_users = mysqli_query($conn, "SELECT COUNT(*) AS total FROM users");
-$row_users = mysqli_fetch_assoc($res_users);
-$total_users = $row_users['total'];
-$res_campaigns = mysqli_query($conn, "SELECT COUNT(*) AS total FROM campaigns");
-$row_campaigns = mysqli_fetch_assoc($res_campaigns);
-$total_campaigns = $row_campaigns['total'];
+$total_users     = getTotalUsers();
+$total_campaigns = getTotalCampaigns();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,14 +22,14 @@ $total_campaigns = $row_campaigns['total'];
     <div id="box">
         <h3>Userbase</h3>
         <p>Total Users: <?php echo $total_users; ?></p>
-        <a href="../AdminSearchUser/adminsearchuser.php">
+        <a href="../php/AdminSearchUser.php">
         <button id="btncol">See More</button>
         </a>
     </div>
     <div id="box">
         <h3>Campaigns</h3>
         <p>Total Campaigns: <?php echo $total_campaigns; ?></p>
-        <a href="../AdminSearchCampaigns/adminsearchcampaigns.php">
+        <a href="../php/AdminSearchCampaigns.php">
         <button id="btncol">See More</button>
         </a>
     </div>
