@@ -8,7 +8,6 @@ if (!isset($_SESSION['user_id'])) {
 include "../db/db.php";
 $uid = $_SESSION['user_id'];
 
-
 $creditRes = mysqli_query(
     $conn,
     "SELECT credits FROM profiles WHERE user_id = $uid"
@@ -30,8 +29,6 @@ if ($creditRow === null) {
     $userCredits = $creditRow['credits'];
 }
 
-
-
 $error = "";
 $success = "";
 
@@ -40,7 +37,7 @@ if (isset($_POST['publish'])) {
     $title = $_POST['title'];
     $subtitle = $_POST['subtitle'];
     $form_link = $_POST['form_link'];
-    $credit = $_POST['credit'];
+    $credit = (int)$_POST['credit'];
     $max_responses = $_POST['max_responses'];
     $time_minutes = $_POST['time_minutes'];
 
@@ -52,7 +49,13 @@ if (isset($_POST['publish'])) {
         empty($time_minutes)
     ) {
         $error = "All required fields must be filled";
-    } else {
+    }
+
+    elseif ($userCredits <= $credit) {
+        $error = "You do not have enough credits to publish this survey.";
+    }
+    else {
+
 
         $sql = "INSERT INTO surveys
                 (user_id, title, subtitle, form_link, credit, max_responses, time_minutes)
@@ -60,6 +63,17 @@ if (isset($_POST['publish'])) {
                 ($uid, '$title', '$subtitle', '$form_link', '$credit', '$max_responses', '$time_minutes')";
 
         if (mysqli_query($conn, $sql)) {
+
+
+            mysqli_query(
+                $conn,
+                "UPDATE profiles
+                 SET credits = credits - $credit
+                 WHERE user_id = $uid"
+            );
+
+            $userCredits -= $credit;
+
             $success = "Survey published successfully";
         } else {
             $error = "Database error";
@@ -198,7 +212,9 @@ $available_surveys_res = mysqli_query(
         <div class="credit-text">
           Total Credits: <?php echo $userCredits; ?>
         </div>
-        <a href="../../../ADMIN/MVC/php/transfercred.php"><button class="btn transfer-btn">Transfer Credits</button></a>
+        <a href="../../../ADMIN/MVC/php/transfercred.php">
+          <button class="btn transfer-btn">Transfer Credits</button>
+        </a>
       </div>
     </div>
 
