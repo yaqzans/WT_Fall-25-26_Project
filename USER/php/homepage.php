@@ -8,7 +8,7 @@
 <body>
 
 <header>
-  <button id="btn"><a href="../Userlogin/userlogin.php">Logout</a></button>
+  <button id="btn"><a href="../php/userlogin.php">Logout</a></button>
   <h2>NeedSurveyResponses</h2>
 </header>
 
@@ -31,8 +31,8 @@
     </p>
 
     <div class="hero-buttons">
-      <a href="../Signuppage/signuppage.php" class="btn-primary">Get Started</a>
-      <a href="../Userlogin/userlogin.php" class="btn-secondary">Sign In</a>
+      <a href="../php/signuppage.php" class="btn-primary">Get Started</a>
+      <a href="../php/userlogin.php" class="btn-secondary">Sign In</a>
     </div>
   </div>
 </main>

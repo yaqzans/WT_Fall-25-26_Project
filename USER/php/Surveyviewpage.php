@@ -1,5 +1,5 @@
 <?php
-include "../db.php";
+include "../db/db.php";
 
 if (!isset($_GET['id'])) {
     die("Survey not found");
@@ -7,9 +7,6 @@ if (!isset($_GET['id'])) {
 
 $id = (int) $_GET['id'];
 
-/* ==================================================
-   PRESET SURVEYS (IDs >= 1000)
-   ================================================== */
 if ($id >= 1000) {
 
     if ($id == 1001) {
@@ -53,9 +50,7 @@ if ($id >= 1000) {
     }
 
 }
-/* ==================================================
-   DATABASE SURVEYS (IDs < 1000)
-   ================================================== */
+
 else {
 
     $res = mysqli_query($conn, "SELECT * FROM surveys WHERE id = $id");
@@ -83,7 +78,7 @@ else {
 <html lang="en">
 <head>
   <title>Survey Details</title>
-  <link rel="stylesheet" href="Surveyviewpage.css">
+  <link rel="stylesheet" href="../css/Surveyviewpage.css">
 </head>
 
 <body>
@@ -137,7 +132,7 @@ else {
 
     <div class="actions">
       <button class="btn ghost" onclick="history.back()">Go Back</button>
-      <a href="../verificationpage/verificationpage.php?id=<?php echo $id; ?>" class="btn primary">
+      <a href="../php/verificationpage.php?id=<?php echo $id; ?>" class="btn primary">
         Start Survey
       </a>
     </div>
