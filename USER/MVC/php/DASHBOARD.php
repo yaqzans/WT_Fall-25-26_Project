@@ -198,7 +198,7 @@ $available_surveys_res = mysqli_query(
         <div class="credit-text">
           Total Credits: <?php echo $userCredits; ?>
         </div>
-        <button class="btn transfer-btn">Transfer Credits</button>
+        <a href="../../../ADMIN/MVC/php/transfercred.php"><button class="btn transfer-btn">Transfer Credits</button></a>
       </div>
     </div>
 
