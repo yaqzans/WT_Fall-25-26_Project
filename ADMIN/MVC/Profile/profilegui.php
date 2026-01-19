@@ -1,81 +1,64 @@
 <?php
-include "../db.php";
+include "../db/pg.php";
 
-$uid = 1;   // temp user
+$uid = 1; // temp user
+
 $erroremail = "";
 $errorpass = "";
 $successemail = "";
 $successpass = "";
 $userDeleted = false;
-$camp_res = mysqli_query($conn, "SELECT * FROM campaigns WHERE user_id = $uid");
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_campaign"])) 
-{
-    $cid = $_POST["delete_campaign"];
-    mysqli_query($conn, "DELETE FROM sessions WHERE campaign_id = $cid");
-    mysqli_query($conn, "DELETE FROM campaigns WHERE id = $cid AND user_id = $uid");
-}
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    if (isset($_POST["delete_account"]))
-    {
-        mysqli_query($conn, "DELETE FROM sessions WHERE user_id = $uid");
-        mysqli_query($conn, "DELETE FROM campaigns WHERE user_id = $uid");
-        mysqli_query($conn, "DELETE FROM profiles WHERE user_id = $uid");
-        mysqli_query($conn, "DELETE FROM users WHERE id = $uid");
 
+/* POST actions */
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    if (isset($_POST["delete_campaign"])) {
+        deleteCampaign($_POST["delete_campaign"], $uid);
+    }
+
+    if (isset($_POST["delete_account"])) {
+        deleteUser($uid);
         $userDeleted = true;
     }
-    if (isset($_POST["update_profile"]) && !$userDeleted)
-    {
-        if (empty($_POST["new_email"]))
-        {
+
+    if (isset($_POST["update_profile"]) && !$userDeleted) {
+        if (empty($_POST["new_email"])) {
             $erroremail = "Email required";
-        }
-        else
-        {
-            $new_email = $_POST["new_email"];
-            mysqli_query($conn,"UPDATE users SET email = '$new_email' WHERE id = $uid");
+        } else {
+            updateEmail($uid, $_POST["new_email"]);
             $successemail = "Profile updated";
         }
     }
-    if (isset($_POST["change_password"]) && !$userDeleted)
-    {
-        if (empty($_POST["new_pass"]) || empty($_POST["confirm_pass"]))
-        {
+
+    if (isset($_POST["change_password"]) && !$userDeleted) {
+        if (empty($_POST["new_pass"]) || empty($_POST["confirm_pass"])) {
             $errorpass = "All fields required";
-        }
-        else
-        {
-            if ($_POST["new_pass"] != $_POST["confirm_pass"])
-            {
-                $errorpass = "Passwords do not match";
-            }
-            else
-            {
-                $hash = password_hash($_POST["new_pass"], PASSWORD_DEFAULT);
-                mysqli_query($conn,"UPDATE users SET password = '$hash' WHERE id = $uid");
-                $successpass = "Password changed";
-            }
+        } elseif ($_POST["new_pass"] !== $_POST["confirm_pass"]) {
+            $errorpass = "Passwords do not match";
+        } else {
+            $hash = password_hash($_POST["new_pass"], PASSWORD_DEFAULT);
+            updatePassword($uid, $hash);
+            $successpass = "Password changed";
         }
     }
 }
-$user_res = mysqli_query($conn, "SELECT * FROM users WHERE id = $uid");
+
+/* FETCH DATA */
+$user_res = getUser($uid);
 $user = mysqli_fetch_assoc($user_res);
-if ($userDeleted || !$user)
-{
+
+if ($userDeleted || !$user) {
     echo "<p style='font-weight:bold; text-align:center; font-size:32px;'>User no longer exists</p>";
     return;
 }
-$profile_res = mysqli_query($conn, "SELECT * FROM profiles WHERE user_id = $uid");
-$profile = mysqli_fetch_assoc($profile_res);
-$camp_res = mysqli_query($conn, "SELECT * FROM campaigns WHERE user_id = $uid");
+
+$profile = mysqli_fetch_assoc(getProfile($uid));
+$camp_res = getUserCampaigns($uid);
 ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="profilegui.css">
+<link rel="stylesheet" href="../css/profilegui.css">
 <title>User Profile</title>
 </head>
 <body>
