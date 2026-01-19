@@ -1,5 +1,5 @@
 <?php
-include "../db.php";
+include "../db/ap.php";
 $res_users = mysqli_query($conn, "SELECT COUNT(*) AS total FROM users");
 $row_users = mysqli_fetch_assoc($res_users);
 $total_users = $row_users['total'];
@@ -10,7 +10,7 @@ $total_campaigns = $row_campaigns['total'];
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="adminpage.css">
+<link rel="stylesheet" href="../css/adminpage.css">
 <title>Admin Page</title>
 </head>
 
