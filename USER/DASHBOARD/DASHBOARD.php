@@ -6,8 +6,35 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 include "../db.php";
-
 $uid = $_SESSION['user_id'];
+
+/* ===== FIX STARTS HERE ===== */
+
+// TRY TO FETCH CREDITS
+$creditRes = mysqli_query(
+    $conn,
+    "SELECT credits FROM profiles WHERE user_id = $uid"
+);
+
+$creditRow = mysqli_fetch_assoc($creditRes);
+
+// IF PROFILE DOES NOT EXIST → CREATE IT
+if ($creditRow === null) {
+
+    mysqli_query(
+        $conn,
+        "INSERT INTO profiles (user_id, credits)
+         VALUES ($uid, 0)"
+    );
+
+    $userCredits = 0;
+
+} else {
+    $userCredits = $creditRow['credits'];
+}
+
+/* ===== FIX ENDS HERE ===== */
+
 $error = "";
 $success = "";
 
@@ -76,16 +103,16 @@ $available_surveys_res = mysqli_query(
       <h2>Available Surveys</h2>
       <div class="muted">Surveys posted by other participants.</div>
 
+      <ul class="survey-list">
         <?php
         while ($row = mysqli_fetch_assoc($available_surveys_res)) {
             echo '<li class="survey-item">';
             echo '<div class="survey-left">';
             echo '<div class="survey-title">
-            <a href="../Surveyviewpage/surveyviewpage.php?id=' . $row['id'] . '" style="color:inherit; text-decoration:none;">
-            ' . htmlspecialchars($row['title']) . '
-            </a>
-            </div>';
-
+                  <a href="../Surveyviewpage/surveyviewpage.php?id=' . $row['id'] . '" style="color:inherit; text-decoration:none;">
+                  ' . htmlspecialchars($row['title']) . '
+                  </a>
+                  </div>';
             echo '<div class="muted">' . htmlspecialchars($row['subtitle']) . '</div>';
             echo '</div>';
             echo '<div class="survey-right">';
@@ -111,11 +138,10 @@ $available_surveys_res = mysqli_query(
                 echo '<li class="survey-item">';
                 echo '<div class="survey-left">';
                 echo '<div class="survey-title">
-                <a href="../Surveyviewpage/surveyviewpage.php?id=' . $row['id'] . '" style="color:inherit; text-decoration:none;">
-                ' . htmlspecialchars($row['title']) . '
-                </a>
-                </div>';
-
+                      <a href="../Surveyviewpage/surveyviewpage.php?id=' . $row['id'] . '" style="color:inherit; text-decoration:none;">
+                      ' . htmlspecialchars($row['title']) . '
+                      </a>
+                      </div>';
                 echo '<div class="muted">' . htmlspecialchars($row['subtitle']) . '</div>';
                 echo '</div>';
                 echo '<div class="survey-right">';
@@ -172,7 +198,9 @@ $available_surveys_res = mysqli_query(
 
     <div class="card credit-box">
       <div class="credit-row">
-        <div class="credit-text">Total Credits: 20</div>
+        <div class="credit-text">
+          Total Credits: <?php echo $userCredits; ?>
+        </div>
         <button class="btn transfer-btn">Transfer Credits</button>
       </div>
     </div>

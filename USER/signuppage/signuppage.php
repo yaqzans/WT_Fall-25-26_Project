@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    /* INSERT USER (NO HASHING) */
+    /* INSERT USER + CREATE PROFILE WITH 0 CREDITS */
     if (
         empty($emailErr) &&
         empty($passwordErr) &&
@@ -53,8 +53,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 VALUES ('$email', '$password')";
 
         if (mysqli_query($conn, $sql)) {
+
+            /* GET NEW USER ID */
+            $newUserId = mysqli_insert_id($conn);
+
+            /* CREATE PROFILE WITH 0 CREDITS */
+            mysqli_query(
+                $conn,
+                "INSERT INTO profiles (user_id, credits)
+                 VALUES ($newUserId, 0)"
+            );
+
             header("Location: ../DASHBOARD/DASHBOARD.php");
             exit();
+
         } else {
             $emailErr = "Email already exists";
         }
@@ -123,7 +135,9 @@ function togglePassword() {
 </div>
 
 <div class="actions">
-<button type="reset" class="btn-secondary"><a href="../Homepage/Homepage.php">Discard</a></button>
+<button type="reset" class="btn-secondary">
+  <a href="../Homepage/Homepage.php">Discard</a>
+</button>
 <button type="submit" class="btn-primary">Sign Up</button>
 </div>
 
